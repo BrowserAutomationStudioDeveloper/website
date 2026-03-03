@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdur Razzak - Automation Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+        }
+
+        body {
+            overflow-x: hidden;
+            background: #1D242E;
+            color: #e5e5e5;
+        }
+
+        .hero-header {
+            width: 100%;
+            min-height: 100vh;
+            background: #1D242E;
+            position: relative;
+        }
+
+        .wrapper {
+            width: 1280px;
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 40px 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #1D242E;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 20px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .logo i {
+            height: 45px;
+            width: 45px;
+            background-color: #67EC54;
+            border-radius: 50%;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.5rem;
+            padding: 10px;
+            margin-right: 5px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo .logo-text {
+            font-size: 24px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        nav .togglebtn {
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            top: 45px;
+            right: 3%;
+            z-index: 5;
+            cursor: pointer;
+            display: none;
+        }
+
+        nav .togglebtn span {
+            display: block;
+            background-color: #fff;
+            margin: 5px 0px;
+            width: 100%;
+            height: 3px;
+            transition: 0.3s;
+        }
+
+        nav .navlinks {
+            list-style-type: none;
+        }
+
+        nav .navlinks li {
+            display: inline-block;
+        }
+
+        nav .navlinks li a {
+            color: #e5e5e5;
+            margin-right: 2.5rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav .navlinks li a:hover {
+            color: #67EC54;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-top: 8rem;
+            min-height: 100vh;
+        }
+
+        .hero-pic {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .hero-pic::before,
+        .hero-pic::after {
+            content: '';
+            position: absolute;
+            width: 103%;
+            height: 103%;
+            top: -2%;
+            left: -2%;
+            border-radius: 50%;
+            background: conic-gradient(transparent, transparent, #03f740);
+            animation: rotate-border 10s linear infinite;
+            z-index: 0;
+        }
+
+        .hero-pic::after {
+            animation-delay: -5s;
+        }
+
+        .hero-pic .img-box {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes rotate-border {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .hero-pic img:hover {
+            transform: scale(1.2);
+        }
+
+        .hero-text {
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-text h5 {
+            color: #FFF;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h5 span {
+            color: #67EC54;
+            font-size: 16px;
+        }
+
+        .hero-text h1 {
+            color: #67EC54;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            color: #e5e5e5;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            margin: 45px 0;
+        }
+
+        .btn {
+            border-color: #67EC54;
+            color: #fff;
+            background-color: #333;
+            padding: 12px 25px;
+            margin: 5px 0;
+            margin-right: 7px;
+            border-radius: 30px;
+            border: 2px solid #fff;
+            box-shadow: 0 10px 10px -8px rgba(0, 0, 0, 0.78);
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background-color: #67EC54;
+            color: #1D242E;
+            transform: translateY(-3px);
+        }
+
+        .btn.active {
+            border-color: #67EC54;
+            background-color: #67EC54;
+            color: #1D242E;
+        }
+
+        .btn.active:hover {
+            background-color: #4cc93a;
+        }
+
+        .hero-text .social {
+            margin-top: 25px;
+        }
+
+        .hero-text .social a {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .hero-text .social i {
+            color: #e5e5e5;
+            font-size: 21px;
+            transition: 0.5s;
+        }
+
+        .hero-text .social i:hover {
+            color: #67EC54;
+            transform: rotate(360deg);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #67EC54;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #67EC54;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #e5e5e5;
+            margin-bottom: 50px;
+        }
+
+        /* Services Section */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: #2A3341;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: #67EC54;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-icon i {
+            font-size: 30px;
+            color: #1D242E;
+        }
+
+        .service-card h3 {
+            color: #67EC54;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .skill-category {
+            background: #2A3341;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .skill-category h3 {
+            color: #67EC54;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: #3D4552;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: #67EC54;
+            border-radius: 10px;
+            position: relative;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* Resume Section */
+        .resume-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .resume-column h3 {
+            color: #67EC54;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #67EC54;
+        }
+
+        .resume-item {
+            background: #2A3341;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .resume-item h4 {
+            color: #67EC54;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .resume-meta {
+            color: #a0a0a0;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .resume-item p, .resume-item ul {
+            line-height: 1.6;
+        }
+
+        .resume-item ul {
+            padding-left: 20px;
+        }
+
+        .resume-item li {
+            margin-bottom: 8px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+            background: #2A3341;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-platform {
+            background: #67EC54;
+            color: #1D242E;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .testimonial-date {
+            color: #a0a0a0;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .client-details {
+            text-align: left;
+            margin-left: 15px;
+        }
+
+        .client-name {
+            color: #67EC54;
+            font-weight: bold;
+        }
+
+        .client-position {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Pricing Section */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: #2A3341;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid #67EC54;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #67EC54;
+            color: #1D242E;
+            padding: 5px 30px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+
+        .pricing-title {
+            color: #67EC54;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: #67EC54;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .pricing-features li.disabled {
+            color: #a0a0a0;
+        }
+
+        .pricing-features li.disabled::before {
+            content: '✕';
+            color: #ff4d4d;
+        }
+
+        .pricing-note {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .portfolio-item {
+            background: #2A3341;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            background: #3D4552;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #67EC54;
+            font-size: 3rem;
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-title {
+            color: #67EC54;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-desc {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-features {
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .contact-info h3 {
+            color: #67EC54;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: #67EC54;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1D242E;
+            margin-right: 15px;
+        }
+
+        .contact-form {
+            background: #2A3341;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: #3D4552;
+            border: none;
+            border-radius: 5px;
+            color: #e5e5e5;
+            font-size: 16px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: 2px solid #67EC54;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: #161C25;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo i {
+            width: 40px;
+            height: 40px;
+            background: #67EC54;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        .footer-logo span {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        footer p {
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .footer-social i {
+            width: 40px;
+            height: 40px;
+            background: #2A3341;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e5e5e5;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .footer-social i:hover {
+            background: #67EC54;
+            color: #1D242E;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2A3341;
+            padding-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 930px) {
+            nav .togglebtn {
+                display: initial;
+            }
+
+            .click span:first-child {
+                transform: rotate(-40deg);
+            }
+
+            .click span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .click span:last-child {
+                transform: rotate(45deg);
+            }
+
+            nav .navlinks {
+                position: fixed;
+                top: 100px;
+                right: -100%;
+                width: 60%;
+                height: calc(100vh - 100px);
+                background-color: #222;
+                z-index: 1000;
+                box-shadow: 5px 13px 30px rgba(0, 0, 0, 0.1);
+                transition: 0.5s;
+                padding: 25px 0px;
+            }
+
+            nav .navlinks.open {
+                right: 0;
+            }
+
+            nav .navlinks li {
+                display: block;
+                text-align: center;
+                margin: 25px 0;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding-top: 6rem;
+            }
+
+            .hero-text {
+                padding: 40px 0;
+                text-align: center;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .skills-container,
+            .resume-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+     <div class="hero-header">
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <i class="fa-solid fa-a">B</i>
+                    <div class="logo-text"> razzak</div>
+                </div>
+                <nav>
+                    <div class="togglebtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="navlinks">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#resume">Resume</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <div class="container" id="home">
+                 <div class="hero-pic">
+                    <div class="img-box">
+                        <div class="img-item">
+                            <img src="https://placehold.co/400x400/67EC54/FFFFFF?text=AB" alt="Abdur Razzak">
+                        </div>
+                    </div>
+                 </div>
+                 <div class="hero-text">
+                    <h5>Hi I'm <span class="input">Automation Developer</span></h5>
+                    <h1>Abdur razzak</h1>
+                    <p>I'm a professional automation developer with 4+ years of experience in HTTP automation, browser-based bots, API integration, and web development. I specialize in creating efficient automation solutions that save time and increase productivity.</p>
+
+                    <div class="btn-group">
+                       <a href="#" class="btn active">Download CV</a>
+                       <a href="#contact" class="btn">Contact</a>
+                    </div>
+
+                    <div class="social">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                 </div>
+            </div>
+        </div>
+     </div>
+     
+     <!-- Services Section -->
+     <section class="services" id="services">
+        <div class="wrapper">
+            <h2 class="section-title">What I Do</h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3>HTTP Automation Bot</h3>
+                    <p>A powerful tool that automates HTTP requests, handling GET and POST methods for data extraction, form submission, and web scraping with case.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-window-maximize"></i>
+                    </div>
+                    <h3>Develop Browser Based Bot</h3>
+                    <p>I Develop All type of web Browser Based Bot automation With Browser Optimize and Browser Configuration with Canvas and Opening!</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-plug"></i>
+                    </div>
+                    <h3>API Integration</h3>
+                    <p>I Develop with Type of Bot API Integration with case error transfer.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3>Website Development</h3>
+                    <p>Develop E-commerce, News, Publishing Websites with HTML5, CSS, JavaScript and its frameworks.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-brands fa-wordpress"></i>
+                    </div>
+                    <h3>WordPress</h3>
+                    <p>I Do Customize all type of website and Landing page with WordPress CMS.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Pixel and Tracking</h3>
+                    <p>Traffic: Campaign and affiliate tracking system handle/with real time track and dash covers.</p>
+                </div>
+            </div>
+        </div>
+     </section>
+     
+     <!-- Skills Section -->
+     <section class="skills" id="skills">
+        <div class="wrapper">
+            <h2 class="section-title">Development Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Other Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>WordPress</span>
+                            <span>10%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="10%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Laborts</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Feathering | Video Editing</span>
+                            <span>93%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="93%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>AI</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>End Marvel Effectively with Automation</span>
+                            <span>99%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="99%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Development Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>CSS</span>
+                            <span>83%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="83%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Software</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Plugin</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+     
+     <!-- Resume Section -->
+     <section class="resume" id="resume">
+        <div class="wrapper">
+            <h2 class="section-title">4+ Years of Experience</h2>
+            <h3 class="section-subtitle">My Resume</h3>
+            
+            <div class="resume-container">
+                <div class="resume-column">
+                    <h3>Education</h3>
+                    
+                    <div class="resume-item">
+                        <h4>B.Sc in Computer Science</h4>
+                        <div class="resume-meta">Nevgan Gov University of Tejabal (2024 - 2036)</div>
+                        <p>Studied core Computer Science concepts, with a specialization in Automation and Web Scraping. Developed automation tools using JavaScript and Browser Automation Studio (BAS).</p>
+                    </div>
+                    
+                    <div class="resume-item">
+                        <h4>Higher Secondary Certificate (HSC)</h4>
+                        <div class="resume-meta">Nevgan Gov College of Studies (2022 - 2044)</div>
+                        <p>GPA: 4.085</p>
+                    </div>
+                </div>
+                
+                <div class="resume-column">
+                    <h3>Experience</h3>
+                    
+                    <div class="resume-item">
+                        <h4>Web and App Automation Developer</h4>
+                        <div class="resume-meta">Current Position</div>
+                        <ul>
+                            <li>Web and App Automation with API integrated</li>
+                            <li>HTTP and Browser Automation expertise</li>
+                            <li>Bug handling and error resolution</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resume-item">
+                        <h4>E-commerce Website Project</h4>
+                        <div class="resume-meta">Upcoming Launch</div>
+                        <p>Social Doing E-commerce Website will Launch (AP)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+     
+     <!-- Testimonials Section -->
+     <section class="testimonials" id="testimonials">
+        <div class="wrapper">
+            <h2 class="section-title">What Clients Say</h2>
+            <h3 class="section-subtitle">Testimonial</h3>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-header">
+                    <div class="testimonial-platform">Upwork</div>
+                    <div class="testimonial-date">Mar 4, 2015 - Aug 30, 2021</div>
+                </div>
+                
+                <h4>Android App Development</h4>
+                
+                <div class="client-info">
+                    <div class="client-details">
+                        <div class="client-name">RANKOW THEMES</div>
+                        <div class="client-position">Chief Operating Officer</div>
+                    </div>
+                </div>
+                
+                <p class="testimonial-text">
+                    Maeceiras finibus nec sem ut imperdiet. Ut tincidunt est ac dolor aliquam sodales. Phasellus sed mauris hendrerit, laoreet sem in, lobortis mauris hendrerit ante. Ut tincidunt est ac dolor aliquam sodales phasellus smauris.
+                </p>
+            </div>
+        </div>
+     </section>
+     
+     <!-- Pricing Section -->
+     <section class="pricing" id="pricing">
+        <div class="wrapper">
+            <h2 class="section-title">My Reliable Charges</h2>
+            
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Starter</h3>
+                    <div class="pricing-price">$120-250</div>
+                    <ul class="pricing-features">
+                        <li>Single tabs automation</li>
+                        <li>FingerPrint Configuration</li>
+                        <li>Single Proxy function</li>
+                        <li>Anti Bot protection</li>
+                        <li>Read data text file resource</li>
+                        <li>Content upload</li>
+                        <li>Write data text file</li>
+                        <li>Extract data</li>
+                        <li>Browser clean and reset</li>
+                        <li class="disabled">No API integration</li>
+                        <li>5 Days Delivery</li>
+                        <li>Automated Revolution</li>
+                    </ul>
+                    <a href="#" class="btn active">Order Now</a>
+                    <p class="pricing-note">Make Your Single Bot - Automatic Browser</p>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <h3 class="pricing-title">Standard</h3>
+                    <div class="pricing-price">$250-500</div>
+                    <ul class="pricing-features">
+                        <li>Multi tabs automation</li>
+                        <li>Advanced FingerPrint Configuration</li>
+                        <li>Multi Proxy locations</li>
+                        <li>Advanced Anti Bot protection</li>
+                        <li>Read data from multiple sources</li>
+                        <li>Advanced content upload</li>
+                        <li>Database integration</li>
+                        <li>Advanced data extraction</li>
+                        <li>Automated browser management</li>
+                        <li>Basic API integration</li>
+                        <li>3-5 Days Delivery</li>
+                        <li>Unlimited Revision</li>
+                    </ul>
+                    <a href="#" class="btn active">Order Now</a>
+                    <p class="pricing-note">Pro Automation Bot - Automate Browser OR HTTP</p>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Premium</h3>
+                    <div class="pricing-price">$500-1000</div>
+                    <ul class="pricing-features">
+                        <li>Full website automation</li>
+                        <li>Premium FingerPrint Configuration</li>
+                        <li>Worldwide Proxy locations</li>
+                        <li>Premium Anti Bot protection</li>
+                        <li>Multiple data sources</li>
+                        <li>Premium content management</li>
+                        <li>Cloud database integration</li>
+                        <li>Premium data extraction</li>
+                        <li>Advanced browser management</li>
+                        <li>Full API integration</li>
+                        <li>2-3 Days Delivery</li>
+                        <li>Unlimited Revision & Priority Support</li>
+                    </ul>
+                    <a href="#" class="btn active">Order Now</a>
+                    <p class="pricing-note">Enterprise Level Automation Solutions</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="margin-bottom: 20px; font-style: italic;">Turn Your Ideas into Automation! Custom Browser Automation & Bots for Your Business.</p>
+                <a href="#" class="btn active">Message Me on Telegram</a>
+            </div>
+        </div>
+     </section>
+     
+     <!-- Portfolio Section -->
+     <section class="portfolio" id="portfolio">
+        <div class="wrapper">
+            <h2 class="section-title">My Automation Portfolio</h2>
+            
+            <div class="portfolio-container">
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">YouTube Booster</h3>
+                        <p class="portfolio-desc">100% Working Automation for YouTube growth and engagement</p>
+                        <div class="portfolio-features">
+                            <span>CAMADA System</span>
+                            <span>2 min reset</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Bulk Facebook Reels Upload</h3>
+                        <p class="portfolio-desc">Automated bulk uploading for Facebook Reels</p>
+                        <div class="portfolio-features">
+                            <span>1000ER BOT</span>
+                            <span>3 min reset</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Social Media Video Downloader</h3>
+                        <p class="portfolio-desc">Download videos from all social media platforms in bulk</p>
+                        <div class="portfolio-features">
+                            <span>Bulk Download</span>
+                            <span>All Platforms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+     
+     <!-- Contact Section -->
+     <section class="contact" id="contact">
+        <div class="wrapper">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Talk About Your Project</h3>
+                    <p>Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
+                    
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>your.email@example.com</span>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+123 456 7890</span>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Your Location, Country</span>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn active">Send Message</button>
+                </form>
+            </div>
+        </div>
+     </section>
+     
+     <!-- Footer -->
+     <footer>
+        <div class="wrapper">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-a">B</i>
+                    <span>razzak</span>
+                </div>
+                
+                <p>Automation Developer & Web Specialist</p>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Abdur Razzak. All Rights Reserved.</p>
+            </div>
+        </div>
+     </footer>
+     
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+     <script>
+        // Toggle menu for mobile
+        const toggleBtn = document.querySelector(".togglebtn");
+        const nav = document.querySelector(".navlinks");
+
+        toggleBtn.addEventListener("click", function(){
+            this.classList.toggle("click");
+            nav.classList.toggle("open");
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll(".navlinks li a");
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                toggleBtn.classList.remove("click");
+                nav.classList.remove("open");
+            });
+        });
+
+        // Typed.js initialization
+        document.addEventListener('DOMContentLoaded', function(){
+            const typed = new Typed(".input", {
+                strings:["Automation Developer","Real Device Automation","Android Automation","Web Automation","HTTP Request Automation"],
+                typeSpeed: 70,
+                backSpeed: 55,
+                loop: true
+            });
+        });
+
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress');
+
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width;
+            });
+        }
+
+        // Use Intersection Observer to animate skills when in viewport
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe skills section
+        const skillsSection = document.querySelector('.skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would normally send the form data to a server
+                // For now, we'll just show an alert
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+     </script>
+</body>
+</html>
